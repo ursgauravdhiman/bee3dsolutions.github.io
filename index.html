@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BEE 3D SOLUTION | Engineering with Precision</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class', // Enables class-based dark mode switching
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            dark: '#0B0C10',
+                            navy: '#1F2833',
+                            gray: '#C5C6C7',
+                            gold: '#FFD700',
+                            accent: '#FFC72C'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .gold-glow:hover {
+            box-shadow: 0 0 15px rgba(255, 215, 0, 0.4);
+        }
+        /* Prevents flickering before JS loads */
+        .hidden-icon { display: none; }
+    </style>
+</head>
+<body class="bg-gray-50 dark:bg-brand-dark text-gray-900 dark:text-white font-sans antialiased transition-colors duration-300">
+
+    <!-- NAVIGATION HEADER -->
+    <header class="sticky top-0 z-50 bg-white/90 dark:bg-brand-dark/95 backdrop-blur-md border-b border-gray-200 dark:border-brand-navy/50 transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Logo -->
+            <a href="#" class="flex items-center space-x-3">
+                <div class="w-10 h-10 bg-gradient-to-tr from-brand-gold to-yellow-500 rounded-lg flex items-center justify-center shadow-lg shadow-brand-gold/20">
+                    <span class="text-brand-dark font-black text-xl">B3D</span>
+                </div>
+                <div>
+                    <span class="text-lg font-bold tracking-wider text-gray-900 dark:text-white">BEE 3D</span>
+                    <span class="block text-xs text-yellow-600 dark:text-brand-gold tracking-widest font-semibold uppercase -mt-1">Solution</span>
+                </div>
+            </a>
+
+            <!-- Desktop Nav Links -->
+            <nav class="hidden md:flex items-center space-x-8 text-sm font-medium tracking-wide">
+                <a href="#home" class="text-yellow-600 dark:text-brand-gold hover:text-gray-900 dark:hover:text-white transition duration-200">Home</a>
+                <a href="#about" class="text-gray-600 dark:text-gray-300 hover:text-yellow-600 dark:hover:text-brand-gold transition duration-200">About Us</a>
+                <a href="#services" class="text-gray-600 dark:text-gray-300 hover:text-yellow-600 dark:hover:text-brand-gold transition duration-200">Services</a>
+                <a href="#software" class="text-gray-600 dark:text-gray-300 hover:text-yellow-600 dark:hover:text-brand-gold transition duration-200">Software Stack</a>
+                <a href="#contact" class="text-gray-600 dark:text-gray-300 hover:text-yellow-600 dark:hover:text-brand-gold transition duration-200">Contact</a>
+            </nav>
+
+            <!-- Actions (Theme Toggle & CTA) -->
+            <div class="flex items-center space-x-4">
+                <!-- Theme Toggle Button -->
+                <button id="theme-toggle" class="p-2 text-gray-500 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-brand-navy rounded-lg focus:outline-none transition-colors duration-200">
+                    <i id="theme-toggle-dark-icon" class="fa-solid fa-moon text-xl hidden-icon"></i>
+                    <i id="theme-toggle-light-icon" class="fa-solid fa-sun text-xl hidden-icon"></i>
+                </button>
+
+                <!-- CTA Button (Desktop) -->
+                <div class="hidden md:block">
+                    <a href="#contact" class="px-5 py-2.5 bg-gradient-to-r from-brand-gold to-yellow-500 text-brand-dark font-bold rounded-md hover:scale-105 transition duration-300 shadow-md shadow-brand-gold/10">
+                        Get a Quote
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Toggle Button -->
+                <button id="mobile-menu-btn" class="md:hidden text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white focus:outline-none">
+                    <i class="fa-solid fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Nav Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-gray-50 dark:bg-brand-navy border-b border-gray-200 dark:border-brand-navy/50 px-4 pt-2 pb-4 space-y-3">
+            <a href="#home" class="block text-yellow-600 dark:text-brand-gold text-base font-semibold">Home</a>
+            <a href="#about" class="block text-gray-600 dark:text-gray-300 hover:text-yellow-600 dark:hover:text-brand-gold text-base font-semibold">About Us</a>
+            <a href="#services" class="block text-gray-600 dark:text-gray-300 hover:text-yellow-600 dark:hover:text-brand-gold text-base font-semibold">Services</a>
+            <a href="#software" class="block text-gray-600 dark:text-gray-300 hover:text-yellow-600 dark:hover:text-brand-gold text-base font-semibold">Software Stack</a>
+            <a href="#contact" class="block text-gray-600 dark:text-gray-300 hover:text-yellow-600 dark:hover:text-brand-gold text-base font-semibold">Contact</a>
+            <a href="#contact" class="block text-center py-2.5 bg-brand-gold text-brand-dark font-bold rounded-md">Get a Quote</a>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section id="home" class="relative min-h-[90vh] flex items-center justify-center bg-gradient-to-b from-gray-100 via-white to-gray-100 dark:from-brand-dark dark:via-brand-navy/30 dark:to-brand-dark overflow-hidden py-20 px-4 sm:px-6 lg:px-8 transition-colors duration-300">
+        <!-- Abstract Tech Background Elements -->
+        <div class="absolute inset-0 opacity-10">
+            <div class="absolute top-1/4 left-10 w-96 h-96 bg-brand-gold rounded-full filter blur-[120px]"></div>
+            <div class="absolute bottom-1/4 right-10 w-96 h-96 bg-yellow-600 rounded-full filter blur-[120px]"></div>
+        </div>
+        
+        <div class="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10">
+            <!-- Hero Text content -->
+            <div class="lg:col-span-7 text-left space-y-6">
+                <div class="inline-flex items-center space-x-2 bg-yellow-100 dark:bg-brand-gold/10 border border-yellow-300 dark:border-brand-gold/30 rounded-full py-1.5 px-4 text-xs font-semibold tracking-wider text-yellow-700 dark:text-brand-gold uppercase">
+                    <span class="w-2 h-2 rounded-full bg-yellow-500 dark:bg-brand-gold animate-ping"></span>
+                    <span>Precision CAD & Modeling Services</span>
+                </div>
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight text-gray-900 dark:text-white">
+                    Engineering with <span class="text-transparent bg-clip-text bg-gradient-to-r from-yellow-500 to-yellow-600 dark:from-brand-gold dark:to-yellow-400">Precision</span>
+                </h1>
+                <p class="text-gray-600 dark:text-gray-300 text-lg sm:text-xl max-w-2xl leading-relaxed">
+                    Transforming complex design concepts into high-quality, production-ready manufacturing packages. Established in Haryana, we specialize in heavy machinery, hydraulic systems, and 3D modeling.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 pt-4">
+                    <a href="#services" class="px-8 py-3.5 bg-gradient-to-r from-brand-gold to-yellow-500 text-brand-dark font-extrabold text-center rounded-md transition duration-300 transform hover:translate-y-[-2px] shadow-lg shadow-brand-gold/25 gold-glow">
+                        Our Services
+                    </a>
+                    <a href="#contact" class="px-8 py-3.5 bg-transparent border-2 border-gray-400 hover:border-yellow-500 hover:text-yellow-600 dark:border-gray-500 dark:hover:border-brand-gold dark:hover:text-brand-gold text-gray-700 dark:text-white font-bold text-center rounded-md transition duration-300 transform hover:translate-y-[-2px]">
+                        Let's Optimize Today
+                    </a>
+                </div>
+            </div>
+
+            <!-- Hero Feature Mockup / SVG Concept -->
+            <div class="lg:col-span-5 flex justify-center relative">
+                <div class="w-full max-w-md bg-white dark:bg-brand-navy/40 border border-gray-200 dark:border-white/10 rounded-2xl p-6 shadow-2xl relative transition-colors duration-300">
+                    <!-- Top Window bar -->
+                    <div class="flex items-center space-x-2 mb-4 border-b border-gray-100 dark:border-white/5 pb-3">
+                        <span class="w-3 h-3 rounded-full bg-red-500"></span>
+                        <span class="w-3 h-3 rounded-full bg-yellow-500"></span>
+                        <span class="w-3 h-3 rounded-full bg-green-500"></span>
+                        <span class="text-xs text-gray-500 font-mono pl-2">bee3d_solution_assembly.step</span>
+                    </div>
+                    <!-- Wireframe Render Concept -->
+                    <div class="aspect-square bg-gray-50 dark:bg-brand-dark/80 rounded-lg flex flex-col items-center justify-center p-4 border border-gray-200 dark:border-white/5 relative overflow-hidden transition-colors duration-300">
+                        <!-- Simulated blueprint/grid lines -->
+                        <div class="absolute inset-0 bg-[linear-gradient(rgba(0,0,0,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.03)_1px,transparent_1px)] dark:bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:20px_20px]"></div>
+                        
+                        <!-- Simple 3D Gear Vector Graphic -->
+                        <div class="relative w-40 h-40 flex items-center justify-center animate-[spin_20s_linear_infinite] z-10">
+                            <i class="fa-solid fa-gear text-[140px] text-yellow-500/20 dark:text-brand-gold/20"></i>
+                            <div class="absolute flex items-center justify-center">
+                                <i class="fa-solid fa-gear text-[70px] text-yellow-600/60 dark:text-brand-gold/60"></i>
+                            </div>
+                        </div>
+                        <div class="mt-4 text-center z-10">
+                            <span class="text-xs font-mono text-gray-500 dark:text-gray-400">100% Collision-Free Assembly Verified</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TRUST LOGO BAR (SOFTWARE STACK) -->
+    <section id="software" class="py-12 bg-gray-100 dark:bg-brand-navy/20 border-y border-gray-200 dark:border-brand-navy/40 transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <p class="text-xs uppercase tracking-widest text-yellow-600 dark:text-brand-gold font-bold mb-6">Expertise in Industry Standard CAD Platforms</p>
+            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6 items-center justify-center opacity-70 grayscale hover:grayscale-0 transition-all duration-300">
+                <div class="flex flex-col items-center bg-white dark:bg-brand-navy/40 p-4 rounded-lg border border-gray-200 dark:border-white/5 shadow-sm">
+                    <span class="text-md font-bold tracking-wide text-gray-800 dark:text-white">SOLIDWORKS</span>
+                </div>
+                <div class="flex flex-col items-center bg-white dark:bg-brand-navy/40 p-4 rounded-lg border border-gray-200 dark:border-white/5 shadow-sm">
+                    <span class="text-md font-bold tracking-wide text-gray-800 dark:text-white">Creo Parametric</span>
+                </div>
+                <div class="flex flex-col items-center bg-white dark:bg-brand-navy/40 p-4 rounded-lg border border-gray-200 dark:border-white/5 shadow-sm">
+                    <span class="text-md font-bold tracking-wide text-gray-800 dark:text-white">CATIA</span>
+                </div>
+                <div class="flex flex-col items-center bg-white dark:bg-brand-navy/40 p-4 rounded-lg border border-gray-200 dark:border-white/5 shadow-sm">
+                    <span class="text-md font-bold tracking-wide text-gray-800 dark:text-white">AutoCAD</span>
+                </div>
+                <div class="flex flex-col items-center bg-white dark:bg-brand-navy/40 p-4 rounded-lg border border-gray-200 dark:border-white/5 shadow-sm">
+                    <span class="text-md font-bold tracking-wide text-gray-800 dark:text-white">Fusion 360</span>
+                </div>
+                <div class="flex flex-col items-center bg-white dark:bg-brand-navy/40 p-4 rounded-lg border border-gray-200 dark:border-white/5 shadow-sm">
+                    <span class="text-md font-bold tracking-wide text-gray-800 dark:text-white">Solid Edge</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section id="about" class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div class="space-y-6">
+                <div class="h-1 w-12 bg-yellow-500 dark:bg-brand-gold"></div>
+                <h2 class="text-3xl font-bold tracking-tight sm:text-4xl text-gray-900 dark:text-white">About BEE 3D Solution</h2>
+                <p class="text-gray-600 dark:text-gray-300 leading-relaxed">
+                    Established in January 2023, BEE 3D Solution has quickly positioned itself as a key manufacturing-ready engineering and CAD partner. Based in Haryana, India, we offer seamless end-to-end support that speeds up development cycles and significantly reduces production-floor errors.
+                </p>
+                <div class="grid grid-cols-2 gap-6 pt-4">
+                    <div class="p-4 bg-gray-100 dark:bg-brand-navy/30 rounded-lg border-l-4 border-yellow-500 dark:border-brand-gold transition-colors">
+                        <span class="block text-yellow-600 dark:text-brand-gold font-bold text-xs uppercase tracking-wide">Our Mission</span>
+                        <p class="text-sm text-gray-600 dark:text-gray-300 mt-2">Delivering highly precise, cost-effective engineering drafts directly aligned to mass production lines.</p>
+                    </div>
+                    <div class="p-4 bg-gray-100 dark:bg-brand-navy/30 rounded-lg border-l-4 border-yellow-500 dark:border-brand-gold transition-colors">
+                        <span class="block text-yellow-600 dark:text-brand-gold font-bold text-xs uppercase tracking-wide">Our Vision</span>
+                        <p class="text-sm text-gray-600 dark:text-gray-300 mt-2">To set the global design benchmark for heavy industrial systems and spatial hydraulic automation layouts.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Value Proposition Pillars Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <div class="bg-white dark:bg-brand-navy/40 border border-gray-200 dark:border-white/5 p-6 rounded-xl hover:border-yellow-400 dark:hover:border-brand-gold/30 transition duration-300 shadow-sm">
+                    <div class="w-10 h-10 bg-yellow-100 dark:bg-brand-gold/10 text-yellow-600 dark:text-brand-gold rounded-lg flex items-center justify-center mb-4 text-xl">
+                        <i class="fa-solid fa-shield-halved"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2 text-gray-900 dark:text-white">100% Clash Protection</h3>
+                    <p class="text-sm text-gray-500 dark:text-gray-400">Zero-tolerance spatial collision check prevents manual grinding or re-works on the shop floor.</p>
+                </div>
+                <div class="bg-white dark:bg-brand-navy/40 border border-gray-200 dark:border-white/5 p-6 rounded-xl hover:border-yellow-400 dark:hover:border-brand-gold/30 transition duration-300 shadow-sm">
+                    <div class="w-10 h-10 bg-yellow-100 dark:bg-brand-gold/10 text-yellow-600 dark:text-brand-gold rounded-lg flex items-center justify-center mb-4 text-xl">
+                        <i class="fa-solid fa-industry"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2 text-gray-900 dark:text-white">Manufacturing Oriented</h3>
+                    <p class="text-sm text-gray-500 dark:text-gray-400">Our designs perfectly match tooling offsets, sheet metal allowances, and welding tolerances.</p>
+                </div>
+                <div class="bg-white dark:bg-brand-navy/40 border border-gray-200 dark:border-white/5 p-6 rounded-xl hover:border-yellow-400 dark:hover:border-brand-gold/30 transition duration-300 shadow-sm">
+                    <div class="w-10 h-10 bg-yellow-100 dark:bg-brand-gold/10 text-yellow-600 dark:text-brand-gold rounded-lg flex items-center justify-center mb-4 text-xl">
+                        <i class="fa-solid fa-bolt"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2 text-gray-900 dark:text-white">Rapid Execution</h3>
+                    <p class="text-sm text-gray-500 dark:text-gray-400">High-efficiency CAD workflows designed to meet tight milestone limits without delay.</p>
+                </div>
+                <div class="bg-white dark:bg-brand-navy/40 border border-gray-200 dark:border-white/5 p-6 rounded-xl hover:border-yellow-400 dark:hover:border-brand-gold/30 transition duration-300 shadow-sm">
+                    <div class="w-10 h-10 bg-yellow-100 dark:bg-brand-gold/10 text-yellow-600 dark:text-brand-gold rounded-lg flex items-center justify-center mb-4 text-xl">
+                        <i class="fa-solid fa-handshake"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2 text-gray-900 dark:text-white">Tier-1 Support Pricing</h3>
+                    <p class="text-sm text-gray-500 dark:text-gray-400">Extremely competitive pricing model designed to provide global domestic and offshore operations maximum value.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CORE SERVICES -->
+    <section id="services" class="py-20 bg-gray-100 dark:bg-brand-navy/10 border-t border-gray-200 dark:border-brand-navy/20 transition-colors">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+                <div class="h-1 w-12 bg-yellow-500 dark:bg-brand-gold mx-auto"></div>
+                <h2 class="text-3xl font-bold tracking-tight sm:text-4xl text-gray-900 dark:text-white">Engineering Capabilities</h2>
+                <p class="text-gray-600 dark:text-gray-400 text-lg">We deliver custom mechanical modeling and blueprint detailing services perfectly adapted to real fabrication limits.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Service Cards -->
+                <div class="bg-white dark:bg-brand-navy/30 border border-gray-200 dark:border-white/5 rounded-xl overflow-hidden hover:-translate-y-1 transition duration-300 flex flex-col justify-between shadow-sm">
+                    <div class="p-6 space-y-4">
+                        <div class="text-yellow-500 dark:text-brand-gold text-3xl"><i class="fa-solid fa-gears"></i></div>
+                        <h3 class="text-xl font-bold text-gray-900 dark:text-white">Hydraulic Systems & Power Packs</h3>
+                        <p class="text-sm text-gray-500 dark:text-gray-400">Custom 3D modeling of hydraulic circuits, manifold integrations, advanced spatial piping, and optimized routing to prevent flow bottlenecks.</p>
+                    </div>
+                    <div class="bg-gray-50 dark:bg-brand-navy/40 border-t border-gray-100 dark:border-white/5 px-6 py-4 flex items-center justify-between">
+                        <span class="text-xs font-semibold uppercase text-yellow-600 dark:text-brand-gold tracking-wider">Piping & Routing Layouts</span>
+                        <i class="fa-solid fa-arrow-right text-yellow-600 dark:text-brand-gold text-sm"></i>
+                    </div>
+                </div>
+
+                <div class="bg-white dark:bg-brand-navy/30 border border-gray-200 dark:border-white/5 rounded-xl overflow-hidden hover:-translate-y-1 transition duration-300 flex flex-col justify-between shadow-sm">
+                    <div class="p-6 space-y-4">
+                        <div class="text-yellow-500 dark:text-brand-gold text-3xl"><i class="fa-solid fa-circle-down"></i></div>
+                        <h3 class="text-xl font-bold text-gray-900 dark:text-white">Mechanical & Hydraulic Presses</h3>
+                        <p class="text-sm text-gray-500 dark:text-gray-400">Heavy structural CAD setups from raw GA blueprints. Designing integrated safety blocks, automatic lubrication loops, and assembly guides.</p>
+                    </div>
+                    <div class="bg-gray-50 dark:bg-brand-navy/40 border-t border-gray-100 dark:border-white/5 px-6 py-4 flex items-center justify-between">
+                        <span class="text-xs font-semibold uppercase text-yellow-600 dark:text-brand-gold tracking-wider">Lubrication systems</span>
+                        <i class="fa-solid fa-arrow-right text-yellow-600 dark:text-brand-gold text-sm"></i>
+                    </div>
+                </div>
+
+                <div class="bg-white dark:bg-brand-navy/30 border border-gray-200 dark:border-white/5 rounded-xl overflow-hidden hover:-translate-y-1 transition duration-300 flex flex-col justify-between shadow-sm">
+                    <div class="p-6 space-y-4">
+                        <div class="text-yellow-500 dark:text-brand-gold text-3xl"><i class="fa-solid fa-truck-ramp-box"></i></div>
+                        <h3 class="text-xl font-bold text-gray-900 dark:text-white">Material Handling Systems</h3>
+                        <p class="text-sm text-gray-500 dark:text-gray-400">Robust detailing of EOT Cranes (hoist & trolley layouts) and flight-ready conveyor systems. Modeled to survive complex raw material stress factors.</p>
+                    </div>
+                    <div class="bg-gray-50 dark:bg-brand-navy/40 border-t border-gray-100 dark:border-white/5 px-6 py-4 flex items-center justify-between">
+                        <span class="text-xs font-semibold uppercase text-yellow-600 dark:text-brand-gold tracking-wider">Cranes & Conveyors</span>
+                        <i class="fa-solid fa-arrow-right text-yellow-600 dark:text-brand-gold text-sm"></i>
+                    </div>
+                </div>
+
+                <div class="bg-white dark:bg-brand-navy/30 border border-gray-200 dark:border-white/5 rounded-xl overflow-hidden hover:-translate-y-1 transition duration-300 flex flex-col justify-between shadow-sm">
+                    <div class="p-6 space-y-4">
+                        <div class="text-yellow-500 dark:text-brand-gold text-3xl"><i class="fa-solid fa-rotate"></i></div>
+                        <h3 class="text-xl font-bold text-gray-900 dark:text-white">Industrial Shell Rotators</h3>
+                        <p class="text-sm text-gray-500 dark:text-gray-400">Specially configured heavy-roller bed modeling including chain-driven motor setups. Assisting pressure-vessel or storage tank manufacturing pipelines.</p>
+                    </div>
+                    <div class="bg-gray-50 dark:bg-brand-navy/40 border-t border-gray-100 dark:border-white/5 px-6 py-4 flex items-center justify-between">
+                        <span class="text-xs font-semibold uppercase text-yellow-600 dark:text-brand-gold tracking-wider">Heavy Roller Beds</span>
+                        <i class="fa-solid fa-arrow-right text-yellow-600 dark:text-brand-gold text-sm"></i>
+                    </div>
+                </div>
+
+                <div class="bg-white dark:bg-brand-navy/30 border border-gray-200 dark:border-white/5 rounded-xl overflow-hidden hover:-translate-y-1 transition duration-300 flex flex-col justify-between shadow-sm">
+                    <div class="p-6 space-y-4">
+                        <div class="text-yellow-500 dark:text-brand-gold text-3xl"><i class="fa-solid fa-screwdriver-wrench"></i></div>
+                        <h3 class="text-xl font-bold text-gray-900 dark:text-white">Tooling & Fixture Design</h3>
+                        <p class="text-sm text-gray-500 dark:text-gray-400">Configuring custom welding and assembly jigs to boost continuous-run lines. Systematically minimizing deviation and setup cycles.</p>
+                    </div>
+                    <div class="bg-gray-50 dark:bg-brand-navy/40 border-t border-gray-100 dark:border-white/5 px-6 py-4 flex items-center justify-between">
+                        <span class="text-xs font-semibold uppercase text-yellow-600 dark:text-brand-gold tracking-wider">Welding & Assembly Jigs</span>
+                        <i class="fa-solid fa-arrow-right text-yellow-600 dark:text-brand-gold text-sm"></i>
+                    </div>
+                </div>
+
+                <div class="bg-white dark:bg-brand-navy/30 border border-gray-200 dark:border-white/5 rounded-xl overflow-hidden hover:-translate-y-1 transition duration-300 flex flex-col justify-between shadow-sm">
+                    <div class="p-6 space-y-4">
+                        <div class="text-yellow-500 dark:text-brand-gold text-3xl"><i class="fa-solid fa-tractor"></i></div>
+                        <h3 class="text-xl font-bold text-gray-900 dark:text-white">Agriculture Systems</h3>
+                        <p class="text-sm text-gray-500 dark:text-gray-400">Providing full detailed manufacturing drafts (GD&T, welding instructions, raw metal nesting) for regional non-standard farm implements.</p>
+                    </div>
+                    <div class="bg-gray-50 dark:bg-brand-navy/40 border-t border-gray-100 dark:border-white/5 px-6 py-4 flex items-center justify-between">
+                        <span class="text-xs font-semibold uppercase text-yellow-600 dark:text-brand-gold tracking-wider">Rotavators & Farm Implements</span>
+                        <i class="fa-solid fa-arrow-right text-yellow-600 dark:text-brand-gold text-sm"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CALL TO ACTION & CONTACT -->
+    <section id="contact" class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="bg-gradient-to-br from-gray-100 to-white dark:from-brand-navy dark:to-brand-dark border border-gray-200 dark:border-brand-gold/20 rounded-2xl p-8 sm:p-12 shadow-2xl relative overflow-hidden transition-colors">
+            <!-- Subtle backdrop glow -->
+            <div class="absolute -right-10 -top-10 w-40 h-40 bg-yellow-400/20 dark:bg-brand-gold/10 rounded-full blur-2xl"></div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <!-- Info text -->
+                <div class="lg:col-span-6 space-y-6 relative z-10">
+                    <span class="text-xs uppercase tracking-widest text-yellow-600 dark:text-brand-gold font-bold">Get In Touch</span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold leading-tight text-gray-900 dark:text-white">Partner with BEE 3D Solution Today</h2>
+                    <p class="text-gray-600 dark:text-gray-300">
+                        Ready to optimize your production pipeline? Contact our engineering team for continuous domestic and global CAD support.
+                    </p>
+
+                    <!-- Direct contact info cards -->
+                    <div class="space-y-4 pt-4">
+                        <div class="flex items-start space-x-4">
+                            <div class="w-10 h-10 bg-yellow-100 dark:bg-brand-gold/10 text-yellow-600 dark:text-brand-gold rounded-lg flex items-center justify-center shrink-0">
+                                <i class="fa-solid fa-location-dot"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-sm text-gray-900 dark:text-white">Corporate Office</h4>
+                                <p class="text-xs text-gray-600 dark:text-gray-400">SCO No. 670, 6th Floor, D&E Block, Chandigarh City Centre, Zirakpur, Punjab</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start space-x-4">
+                            <div class="w-10 h-10 bg-yellow-100 dark:bg-brand-gold/10 text-yellow-600 dark:text-brand-gold rounded-lg flex items-center justify-center shrink-0">
+                                <i class="fa-solid fa-phone"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-sm text-gray-900 dark:text-white">Direct Inquiry Line</h4>
+                                <p class="text-xs text-gray-600 dark:text-gray-400">+91 74045 89878</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start space-x-4">
+                            <div class="w-10 h-10 bg-yellow-100 dark:bg-brand-gold/10 text-yellow-600 dark:text-brand-gold rounded-lg flex items-center justify-center shrink-0">
+                                <i class="fa-solid fa-envelope"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-sm text-gray-900 dark:text-white">Engineering Department</h4>
+                                <p class="text-xs text-gray-600 dark:text-gray-400">engineering@bee3dsolution.com</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Form -->
+                <div class="lg:col-span-6 bg-white/80 dark:bg-brand-dark/60 p-6 sm:p-8 rounded-xl border border-gray-200 dark:border-white/5 relative z-10 transition-colors">
+                    <form action="#" class="space-y-4" onsubmit="event.preventDefault(); alert('Query submitted successfully!');">
+                        <div>
+                            <label class="block text-xs uppercase tracking-wide font-bold text-gray-600 dark:text-gray-400 mb-2">Full Name</label>
+                            <input type="text" class="w-full bg-gray-50 dark:bg-brand-navy border border-gray-300 dark:border-white/10 rounded-md py-2.5 px-4 text-sm text-gray-900 dark:text-white focus:outline-none focus:border-yellow-500 dark:focus:border-brand-gold focus:ring-1 focus:ring-yellow-500 transition-colors" placeholder="Enter your name" required>
+                        </div>
+                        <div>
+                            <label class="block text-xs uppercase tracking-wide font-bold text-gray-600 dark:text-gray-400 mb-2">Email Address</label>
+                            <input type="email" class="w-full bg-gray-50 dark:bg-brand-navy border border-gray-300 dark:border-white/10 rounded-md py-2.5 px-4 text-sm text-gray-900 dark:text-white focus:outline-none focus:border-yellow-500 dark:focus:border-brand-gold focus:ring-1 focus:ring-yellow-500 transition-colors" placeholder="yourcompany@email.com" required>
+                        </div>
+                        <div>
+                            <label class="block text-xs uppercase tracking-wide font-bold text-gray-600 dark:text-gray-400 mb-2">Engineering requirement</label>
+                            <select class="w-full bg-gray-50 dark:bg-brand-navy border border-gray-300 dark:border-white/10 rounded-md py-2.5 px-4 text-sm text-gray-900 dark:text-white focus:outline-none focus:border-yellow-500 dark:focus:border-brand-gold focus:ring-1 focus:ring-yellow-500 transition-colors">
+                                <option>Hydraulic Power Pack/Circuits</option>
+                                <option>Heavy Machinery & Cranes</option>
+                                <option>Tooling & Welding Fixtures</option>
+                                <option>General 3D Parametric Modeling</option>
+                                <option>Other Drafting Support</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-xs uppercase tracking-wide font-bold text-gray-600 dark:text-gray-400 mb-2">Message</label>
+                            <textarea rows="3" class="w-full bg-gray-50 dark:bg-brand-navy border border-gray-300 dark:border-white/10 rounded-md py-2.5 px-4 text-sm text-gray-900 dark:text-white focus:outline-none focus:border-yellow-500 dark:focus:border-brand-gold focus:ring-1 focus:ring-yellow-500 transition-colors" placeholder="Briefly describe your design constraints or scope..."></textarea>
+                        </div>
+                        <button type="submit" class="w-full py-3 bg-gradient-to-r from-brand-gold to-yellow-500 text-brand-dark font-extrabold rounded-md shadow-md shadow-yellow-500/20 dark:shadow-brand-gold/20 hover:opacity-95 transition duration-300">
+                            Submit Inquiry
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-gray-100 dark:bg-brand-dark border-t border-gray-200 dark:border-brand-navy/50 py-8 transition-colors">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between text-xs text-gray-500 space-y-4 md:space-y-0">
+            <div>
+                &copy; 2026 BEE 3D SOLUTION. All rights reserved.
+            </div>
+            <div class="flex space-x-6">
+                <a href="#" class="hover:text-yellow-600 dark:hover:text-brand-gold transition">Privacy Policy</a>
+                <a href="#" class="hover:text-yellow-600 dark:hover:text-brand-gold transition">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Interactive Scripts -->
+    <script>
+        // --- 1. Mobile Menu Logic ---
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+
+        // --- 2. Dark/Light Theme Toggle Logic ---
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const darkIcon = document.getElementById('theme-toggle-dark-icon');
+        const lightIcon = document.getElementById('theme-toggle-light-icon');
+
+        // Check LocalStorage or OS preference on initial load
+        if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            lightIcon.classList.remove('hidden-icon');
+            document.documentElement.classList.add('dark');
+        } else if (localStorage.getItem('color-theme') === 'light') {
+            darkIcon.classList.remove('hidden-icon');
+            document.documentElement.classList.remove('dark');
+        } else {
+            // Default to dark mode if no setting exists (matches original design)
+            lightIcon.classList.remove('hidden-icon');
+            document.documentElement.classList.add('dark');
+            localStorage.setItem('color-theme', 'dark');
+        }
+
+        // Listen for toggle button click
+        themeToggleBtn.addEventListener('click', function() {
+            // Toggle icons
+            darkIcon.classList.toggle('hidden-icon');
+            lightIcon.classList.toggle('hidden-icon');
+
+            // Toggle theme and save to localStorage
+            if (document.documentElement.classList.contains('dark')) {
+                document.documentElement.classList.remove('dark');
+                localStorage.setItem('color-theme', 'light');
+            } else {
+                document.documentElement.classList.add('dark');
+                localStorage.setItem('color-theme', 'dark');
+            }
+        });
+    </script>
+</body>
+</html>
